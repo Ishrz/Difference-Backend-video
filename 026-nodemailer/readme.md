@@ -1,5 +1,5 @@
 # Nodemailer
-
+[we will need 4 secret for auth we will genrate here]
 This guide provides step-by-step instructions for setting up and using Nodemailer in a Node.js application with OAuth2 authentication using `ClientID` and `ClientSecret`, along with generating a refresh token using the OAuth 2.0 Playground.
 
 ## Prerequisites
@@ -13,10 +13,20 @@ This guide provides step-by-step instructions for setting up and using Nodemaile
 1. **Go to the Google API Console:**
    - Navigate to the [Google API Console](https://console.developers.google.com/).
    - Create a new project or select an existing one.
+   - go inside it
 
 2. **Enable Gmail API:**
    - Go to the **Library** section.
    - Search for **Gmail API** and enable it.
+  
+2.5 **go Oauth consent secreen:**
+   -get started
+   -appname : project name
+   -support email : your email
+   -next: application > external
+   -email address 
+   -finish > contionoe > create
+   
 
 3. **Create OAuth2 Credentials:**
    - Go to the **Credentials** section.
@@ -24,6 +34,12 @@ This guide provides step-by-step instructions for setting up and using Nodemaile
    - Set the application type to **Web application**.
    - Under **Authorized redirect URIs**, add `http://localhost` and `https://developers.google.com/oauthplayground` (or your application’s URL).
    - After creating, you'll get your **ClientID** and **ClientSecret**.
+   - save these two in .env file
+   - in project goto credential
+   - select web client 1
+   - goto Audience
+   - add test user : add email address and save
+   - (remember the email address we added on test and whenn genrating refresh tokeb step 4 email shoud same)
 
 ## Generating the Refresh Token Using OAuth 2.0 Playground
 
@@ -38,6 +54,8 @@ This guide provides step-by-step instructions for setting up and using Nodemaile
 
 3. **Select Scopes:**
    - In Step 1 on the left panel, select the appropriate scopes for your application. For Gmail, choose:
+   - Gmail API v1
+   - 
      ```
      https://mail.google.com/
      ```
@@ -50,7 +68,7 @@ This guide provides step-by-step instructions for setting up and using Nodemaile
    - Click on **Exchange authorization code for tokens**. This will generate an `access token` and a `refresh token`.
 
 6. **Copy Refresh Token:**
-   - Your `refresh token` will appear under the response for Step 2. Copy it and use it in your `.env` file.
+   - Your `refresh token` will appear under the response for Step 2. Copy it and use it in your `.env` file and also your email id in file.
 
 ## Installation
 
